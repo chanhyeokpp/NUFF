@@ -10,6 +10,15 @@ For the multi-source public-link ingestion work, also read these files in order 
 
 Treat the specification as the authority for what to build, the plan as the authority for how to build it, and the task list as execution state. Do not silently widen scope or resolve an open decision in code. Record the decision in the plan first. Mark a task complete only after its stated tests and acceptance criteria pass.
 
+Use the 12-stage delivery roadmap at the top of `tasks.md` as the user-facing unit of progress. When implementation is requested:
+
+- At the start of every stage, send a short update in this exact shape: `Nuff 개발 X/12단계 — <단계명> 시작 · 예상 <활성 작업 시간>`.
+- A time estimate means active agent work, not guaranteed wall-clock completion. Mention external waiting separately.
+- Keep working through the detailed task IDs assigned to that stage. Do not ask for routine implementation choices; choose the safest reversible option that follows the specification.
+- At stage completion, update the checklist, run the stage verification, and report: `X/12단계 완료 — <검증 결과>. 다음은 Y/12단계 — <단계명> · 예상 <시간>, 시작합니다.` Then continue when the user's instruction covers multiple stages.
+- Pause only for a real boundary: a production secret, paid provider choice, destructive or irreversible action, production deployment, or external console/real-device verification that cannot be completed safely without the user.
+- If work stops mid-stage, report the current stage, completed task IDs, remaining task IDs, and the next concrete action. Never imply that the stage is complete.
+
 Keep these facts distinct in code and documentation:
 
 - A KakaoTalk Channel relationship webhook does not deliver chat messages. Nuff receives user utterances through a Kakao chatbot Skill.

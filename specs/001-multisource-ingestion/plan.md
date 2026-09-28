@@ -4,6 +4,14 @@ Status: approved structure; provider choices pending benchmark
 Specification: `spec.md`  
 Execution checklist: `tasks.md`
 
+## Delivery cadence
+
+Implementation is delivered through the 12-stage roadmap in `tasks.md`. Each stage is a reviewable checkpoint that must leave the existing capture paths usable and the repository in a tested, commit-ready state. The roadmap is the user-facing progress view; the task IDs remain the technical source of truth.
+
+Estimates in the roadmap are active implementation time, not calendar promises. Provider reruns on a different day, production canaries, external console changes, and real-device checks may add elapsed time without adding equivalent coding time.
+
+When a request authorizes work across multiple stages, continue automatically after announcing each transition. Stop only at the explicit external boundaries defined in `AGENTS.md`.
+
 ## Implementation principles
 
 1. Preserve the current durable-before-acknowledgement behavior.

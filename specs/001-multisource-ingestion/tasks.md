@@ -4,6 +4,35 @@ Status: not started
 Specification: `spec.md`  
 Technical plan: `plan.md`
 
+## 12-stage delivery roadmap
+
+This roadmap is the user-facing development sequence. Detailed task IDs below remain the completion checklist. Each stage ends with a tested, commit-ready checkpoint; later stages must not be required for the current app to keep working.
+
+| Stage | Scope | Detailed tasks | Expected active time | External wait or user boundary |
+|---:|---|---|---:|---|
+| 1/12 | Baseline corpus and current metrics | T001 | 2–3 hours | Sanitized public test URLs may need review |
+| 2/12 | Provider evaluation and route decisions | T002–T005 | 3–5 hours | Actor tests must be repeated on a different day; paid Actor selection needs user approval |
+| 3/12 | D1 schema and repository foundation | T101–T102 | 3–5 hours | Production migration is not applied in this stage |
+| 4/12 | Compatibility and telemetry | T103–T104 | 2–4 hours | None for local implementation |
+| 5/12 | Source classifier and normalized document contracts | T201–T203 | 3–5 hours | None for local implementation |
+| 6/12 | Extraction/analysis separation | T204 | 2–3 hours | None for local implementation |
+| 7/12 | Apify gateway and secure callback | T301–T304 | 4–6 hours | Requires Apify configuration; secret entry stays outside the repository |
+| 8/12 | First social route, then remaining approved fallbacks | T305 plus approved outcomes from T002–T005 | 3–5 hours | Paid calls and live canary require user approval |
+| 9/12 | Queue, batching, retries, and recovery | T401–T405 | 5–8 hours | Cloudflare production bindings and deployment require user approval |
+| 10/12 | Shared public-document reuse and backfill | T501–T505 | 5–8 hours | Production backfill/canary requires user approval |
+| 11/12 | Evidence-backed analysis | T601–T603 | 3–5 hours | Live model quality sampling may require configured API keys |
+| 12/12 | Operations, budgets, regression, and rollout | T701–T705 | 5–8 hours | Production deployment, external consoles, and real-device verification require the user |
+
+Expected total active work: roughly 40–65 hours. Calendar time can be longer because provider evaluation intentionally spans more than one day and production gates require observation.
+
+### Progress communication contract
+
+- Start: `Nuff 개발 X/12단계 — <단계명> 시작 · 예상 <활성 작업 시간>`
+- Completion: `X/12단계 완료 — <검증 결과>. 다음은 Y/12단계 — <단계명> · 예상 <시간>, 시작합니다.`
+- Continue automatically across stages when the user's request covers the remaining roadmap; do not wait for routine confirmation.
+- Before an external boundary, finish every safe local task first, then ask for the smallest required user action in one message.
+- If interrupted, record the exact stage and task IDs completed so the next session resumes without repeating work.
+
 ## Execution rules
 
 - Work in task order unless a task explicitly lists no dependency.
@@ -12,7 +41,7 @@ Technical plan: `plan.md`
 - Use forward-only migrations and backward-compatible reads during rollout.
 - Never add a production secret to the repository, command output, fixture, or document.
 - Actor selection tasks produce evidence in `plan.md`; implementation must not guess a community Actor.
-- After each phase, run the full 39-test suite, source lint excluding generated output, and the production build.
+- After each delivery stage, run the complete repository test suite, source lint excluding generated output, and the production build. Record the actual test count instead of assuming a fixed number.
 
 ## Phase 0 — Baseline and provider evidence
 
