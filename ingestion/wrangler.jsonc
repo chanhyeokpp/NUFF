@@ -1,0 +1,9 @@
+{
+  "name": "nuff-kakao-ingress",
+  "main": "worker.ts",
+  "compatibility_date": "2026-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "triggers": {"crons": ["* * * * *"]},
+  "d1_databases": [{"binding":"DB","database_name":"nuff-ingestion","database_id":"d3324328-aee7-4996-a9cc-57fbae3e1510","migrations_dir":"../drizzle"}],
+  "vars": {"OPENAI_MODEL":"gpt-4.1-mini","GEMINI_MODEL":"gemini-3.8-flash","EMAIL_FROM":"Nuff <onboarding@resend.dev>"}
+}
