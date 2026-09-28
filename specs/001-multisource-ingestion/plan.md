@@ -33,6 +33,9 @@ When a request authorizes work across multiple stages, continue automatically af
 - Instagram uses public preview metadata and intentionally avoids misleading AI analysis;
 - `contents.data` stores a serialized `Item`, mixing source metadata and derived analysis;
 - deduplication is owner plus normalized URL, so cross-owner provider work is not reused.
+- the fixed public corpus is `benchmarks/extraction/corpus.v1.json`, with 30 ordinary-web, 20 YouTube, 20 Instagram, 20 TikTok, and 11 negative cases;
+- the credential-free 2026-09-28 run produced 24/30 ready ordinary-web results, preview-only `needs_content` for all Instagram and TikTok cases, and immediate `needs_content` for YouTube because official metadata was not configured;
+- the same run found that a YouTube URL with a nonstandard port bypasses normal URL validation and reaches the metadata-unconfigured result; T201 must close this with a regression test.
 
 ## Decisions
 

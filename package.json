@@ -12,7 +12,9 @@
     "start": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --inspector-port 0",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
+    "test": "node scripts/run-tests.mjs",
     "test:ingestion": "esbuild tests/ingestion.test.ts --bundle --platform=node --format=esm --outfile=.sites-runtime/ingestion.test.mjs && node --test .sites-runtime/ingestion.test.mjs",
+    "benchmark:extraction": "esbuild scripts/extraction-baseline.ts --bundle --platform=node --format=esm --outfile=.sites-runtime/extraction-baseline.mjs && node .sites-runtime/extraction-baseline.mjs",
     "dev:ingestion": "wrangler dev --config ingestion/wrangler.jsonc --test-scheduled --port 8788 --persist-to .wrangler/ingestion-state"
   },
   "dependencies": {

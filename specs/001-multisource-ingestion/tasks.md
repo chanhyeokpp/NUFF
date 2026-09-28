@@ -1,6 +1,7 @@
 # Tasks: Multi-source public-link ingestion
 
-Status: not started  
+Status: stage 1 complete
+
 Specification: `spec.md`  
 Technical plan: `plan.md`
 
@@ -45,7 +46,7 @@ Expected total active work: roughly 40–65 hours. Calendar time can be longer b
 
 ## Phase 0 — Baseline and provider evidence
 
-- [ ] **T001 Record current extraction baseline**
+- [x] **T001 Record current extraction baseline**
   - Build a sanitized fixed corpus with ordinary web, YouTube, Instagram, TikTok, inaccessible, malformed, and deceptive-host cases.
   - Record current ready/needs-content/failed result, duration, and extraction mode.
   - Do not commit private URLs, credentials, or copyrighted transcripts.
