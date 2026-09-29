@@ -178,16 +178,15 @@ export function buildEvaluationPlans(candidate: ProviderCandidate, corpus: Extra
   const entries = entriesForRoute(candidate.route, corpus, baseline, youtubeFallbackCaseIds);
   if (candidate.route === 'youtube' && !entries.length) return [];
   const urls = entries.map(entry => entry.url);
-  const duplicate = urls[0];
-  if (!duplicate) throw new Error(`no_evaluation_cases:${candidate.route}`);
+  if (!urls.length) throw new Error(`no_evaluation_cases:${candidate.route}`);
 
   switch (candidate.inputProfile) {
     case 'instagram-apify-official-v1': {
       const posts = entries.filter(entry => !entry.url.includes('/reel/'));
       const reels = entries.filter(entry => entry.url.includes('/reel/'));
       return [
-        plan(`${candidate.id}-posts`, posts, [...posts.map(entry => entry.url), posts[0].url], { resultsType: 'posts', directUrls: [...posts.map(entry => entry.url), posts[0].url], resultsLimit: 1, addParentData: false }),
-        plan(`${candidate.id}-reels`, reels, [...reels.map(entry => entry.url), reels[0].url], { resultsType: 'reels', directUrls: [...reels.map(entry => entry.url), reels[0].url], resultsLimit: 1, addParentData: false }),
+        plan(`${candidate.id}-posts`, posts, posts.map(entry => entry.url), { resultsType: 'posts', directUrls: posts.map(entry => entry.url), resultsLimit: 1, addParentData: false }),
+        plan(`${candidate.id}-reels`, reels, reels.map(entry => entry.url), { resultsType: 'reels', directUrls: reels.map(entry => entry.url), resultsLimit: 1, addParentData: false }),
       ];
     }
     case 'instagram-apidojo-v1': {
@@ -199,23 +198,23 @@ export function buildEvaluationPlans(candidate: ProviderCandidate, corpus: Extra
       });
     }
     case 'tiktok-clockworks-v1': {
-      const inputUrls = [...urls, duplicate];
+      const inputUrls = urls;
       return [plan(candidate.id, entries, inputUrls, { postURLs: inputUrls, resultsPerPage: 1, scrapeRelatedVideos: false, scrapeAdditionalAuthorMeta: false, shouldDownloadVideos: false, shouldDownloadCovers: false, shouldDownloadSlideshowImages: false, shouldDownloadAvatars: false, shouldDownloadMusicCovers: false, downloadSubtitlesOptions: 'NEVER_DOWNLOAD_SUBTITLES', commentsPerPost: 0, proxyCountryCode: 'None' })];
     }
     case 'tiktok-get-leads-v1': {
-      const inputUrls = [...urls, duplicate];
+      const inputUrls = urls;
       return [plan(candidate.id, entries, inputUrls, { scrapeMode: 'tiktok-video-scraper', postURLs: inputUrls, useCache: false, includeTranscripts: false, proxyConfiguration: {} })];
     }
     case 'youtube-prodiger-captions-v1': {
-      const inputUrls = [...urls, duplicate];
+      const inputUrls = urls;
       return [plan(candidate.id, entries, inputUrls, { videoUrls: inputUrls, preferredLanguage: 'ko', transcriptMethod: 'captions', outputFormat: 'json', includeTimestamps: true, maxDurationMinutes: 300, maxVideosPerChannel: 1, maxWhisperMinutesPerRun: 0, proxyConfiguration: { useApifyProxy: true, apifyProxyGroups: ['RESIDENTIAL'] } })];
     }
     case 'youtube-insight-captions-v1': {
-      const inputUrls = [...urls, duplicate];
+      const inputUrls = urls;
       return [plan(candidate.id, entries, inputUrls, { videoUrls: inputUrls, languages: ['ko', 'en'], format: 'segments', includeTimestamps: true, includeMetadata: true, maxConcurrency: 4, videoTimeoutSecs: 30, maxRunSecs: 480, proxyConfiguration: { useApifyProxy: true }, residentialFallback: true })];
     }
     case 'web-apify-content-crawler-v1': {
-      const inputUrls = [...urls, duplicate];
+      const inputUrls = urls;
       return [plan(candidate.id, entries, inputUrls, { startUrls: inputUrls.map(url => ({ url })), crawlerType: 'playwright:adaptive', maxCrawlDepth: 0, maxCrawlPages: inputUrls.length, useSitemaps: false, useLlmsTxt: false, respectRobotsTxtFile: true, keepUrlFragments: false, proxyConfiguration: { useApifyProxy: true }, requestTimeoutSecs: 45, maxRequestRetries: 1, dynamicContentWaitSecs: 3, blockMedia: true, htmlTransformer: 'readableText', readableTextCharThreshold: 120 })];
     }
     default:
@@ -268,6 +267,10 @@ export function sanitizePlanResult(candidate: ProviderCandidate, planValue: Eval
       continue;
     }
     const success = successfulItem(candidate.route, item);
+    if (entry.case === 'inaccessible' && success.success) {
+      cases.push({ caseId: entry.id, status: 'explicit_failure', durationMs, hasCaption: false, hasTranscript: false, hasTimestamps: false, errorCode: 'unexpected_success_for_inaccessible_case' });
+      continue;
+    }
     const status = success.success ? candidate.route === 'youtube' ? 'transcript_success' : candidate.route === 'web' ? 'content_success' : 'metadata_success' : 'missing';
     cases.push({ caseId: entry.id, status, durationMs, hasCaption: success.hasCaption, hasTranscript: success.hasTranscript, hasTimestamps: success.hasTimestamps });
   }

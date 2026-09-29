@@ -25,6 +25,7 @@ test('evaluation plans use only the fixed corpus and the direct web failures', (
   const instagramPlans = buildEvaluationPlans(candidate('instagram-apify-official'), corpus, baseline.results);
   assert.equal(instagramPlans.flatMap(plan => plan.caseIds).length, 21);
   assert.ok(instagramPlans.every(plan => plan.maxItems <= 100));
+  assert.ok(instagramPlans.every(plan => new Set(plan.inputUrls).size === plan.inputUrls.length));
   const webPlans = buildEvaluationPlans(candidate('web-apify-content-crawler'), corpus, baseline.results);
   assert.equal(webPlans[0].caseIds.length, 7);
   assert.ok(webPlans[0].caseIds.includes('web-030'));
@@ -79,4 +80,15 @@ test('summary applies the documented provider gate', () => {
   assert.equal(summary.gate.metadataSuccess, true);
   assert.equal(summary.gate.explicitCoverage, true);
   assert.equal(summary.gate.unambiguousMapping, true);
+});
+
+test('an inaccessible benchmark case cannot pass from a long error page', () => {
+  const selected = candidate('web-apify-content-crawler');
+  const plan = buildEvaluationPlans(selected, corpus, baseline.results)[0];
+  const index = plan.caseIds.indexOf('negative-inaccessible-web');
+  assert.ok(index >= 0);
+  const subset = { ...plan, caseIds: [plan.caseIds[index]], inputUrls: [plan.inputUrls[index]] };
+  const result = sanitizePlanResult(selected, subset, [{ url: subset.inputUrls[0], text: 'x'.repeat(200) }], 100, 'SUCCEEDED', 0.001);
+  assert.equal(result.cases[0].status, 'explicit_failure');
+  assert.equal(result.cases[0].errorCode, 'unexpected_success_for_inaccessible_case');
 });

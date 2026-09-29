@@ -63,7 +63,25 @@ async function apify(pathname: string, init?: RequestInit) {
     headers: { Accept: 'application/json', Authorization: `Bearer ${token}`, ...(init?.body ? { 'Content-Type': 'application/json' } : {}), ...init?.headers },
     signal: AbortSignal.timeout(65000),
   });
-  if (!response.ok) throw new Error(`apify_http_${response.status}`);
+  if (!response.ok) {
+    const body = await response.text();
+    let type = 'unknown';
+    let message = '';
+    try {
+      const parsed = JSON.parse(body) as { error?: { type?: unknown; message?: unknown } };
+      if (typeof parsed.error?.type === 'string') type = parsed.error.type.replace(/[^a-z0-9_-]+/gi, '_').slice(0, 80);
+      if (typeof parsed.error?.message === 'string') message = parsed.error.message;
+    } catch {
+      message = '';
+    }
+    const safeMessage = message
+      .replace(/https?:\/\/\S+/gi, '[url]')
+      .replace(/apify_api_[a-z0-9_-]+/gi, '[redacted-token]')
+      .replace(/[\r\n\t]+/g, ' ')
+      .slice(0, 300);
+    if (safeMessage) process.stderr.write(`Apify request rejected (${response.status}/${type}): ${safeMessage}\n`);
+    throw new Error(`apify_http_${response.status}_${type}`);
+  }
   return response.json() as Promise<{ data?: ActorRun } | unknown[]>;
 }
 
@@ -81,6 +99,7 @@ async function executePlan(candidate: ProviderCandidate, plan: ReturnType<typeof
     maxItems: String(plan.maxItems),
     maxTotalChargeUsd: String(candidate.maxChargeUsdPerRun),
     waitForFinish: '60',
+    forcePermissionLevel: candidate.permissionLevel,
   });
   const started = await apify(`acts/${candidate.actorApiId}/runs?${query}`, { method: 'POST', body: JSON.stringify(plan.input) }) as { data?: ActorRun };
   if (!started.data?.id) throw new Error('apify_run_id_missing');

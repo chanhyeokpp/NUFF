@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "passDate": "2026-09-29",
+  "generatedAt": "2026-09-29T04:43:09.521Z",
+  "candidate": {
+    "id": "tiktok-get-leads",
+    "route": "tiktok",
+    "actorId": "get-leads/all-in-one-tiktok-scraper",
+    "buildId": "JSU75mFvExFbp1Fta",
+    "buildNumber": "0.1.224",
+    "permissionLevel": "LIMITED_PERMISSIONS"
+  },
+  "storagePolicy": "raw provider storage deleted after in-memory sanitization",
+  "summary": {
+    "totalCases": 21,
+    "publicCases": 20,
+    "successfulPublicCases": 18,
+    "metadataSuccessRate": 0.9,
+    "transcriptSuccessRate": 0,
+    "timestampCoverageRate": 0,
+    "explicitResultOrReasonRate": 1,
+    "p50DurationMs": 32926,
+    "p95DurationMs": 32926,
+    "duplicateResultCount": 0,
+    "unmappedResultCount": 2,
+    "costUsd": 0.09004999999999999,
+    "costPerAttemptUsd": 0.0042880952380952376,
+    "costPerSuccessfulItemUsd": 0.005002777777777777,
+    "gate": {
+      "metadataSuccess": true,
+      "explicitCoverage": true,
+      "unambiguousMapping": false
+    }
+  },
+  "runs": [
+    {
+      "planId": "tiktok-get-leads",
+      "status": "SUCCEEDED",
+      "durationMs": 32926,
+      "costUsd": 0.09004999999999999,
+      "outputCount": 23,
+      "unmappedResultCount": 2,
+      "ignoredHelperResultCount": 0,
+      "duplicateResultCount": 0,
+      "cases": [
+        {
+          "caseId": "tiktok-001",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-002",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-003",
+          "status": "explicit_failure",
+          "durationMs": 32926,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        },
+        {
+          "caseId": "tiktok-004",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-005",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-006",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-007",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-008",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-009",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-010",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-011",
+          "status": "explicit_failure",
+          "durationMs": 32926,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        },
+        {
+          "caseId": "tiktok-012",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-013",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-014",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-015",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-016",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-017",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-018",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-019",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "tiktok-020",
+          "status": "metadata_success",
+          "durationMs": 32926,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "negative-inaccessible-tiktok",
+          "status": "explicit_failure",
+          "durationMs": 32926,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        }
+      ]
+    }
+  ]
+}

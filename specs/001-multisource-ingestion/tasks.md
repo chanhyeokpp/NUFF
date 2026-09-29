@@ -1,6 +1,6 @@
 # Tasks: Multi-source public-link ingestion
 
-Status: stage 2 in progress — evaluation harness ready; paid pass and different-day rerun pending
+Status: stage 2 in progress — pass 1 recorded on 2026-09-29; different-day rerun pending
 
 Specification: `spec.md`  
 Technical plan: `plan.md`
@@ -57,26 +57,26 @@ Expected total active work: roughly 40–65 hours. Calendar time can be longer b
   - Test at least two maintained candidates on the same corpus twice on different days.
   - Record pinned Actor/build, schema, metadata success, explicit failure coverage, duration, and cost in `plan.md`.
   - Exit: one candidate passes the Actor gate or the route remains explicitly blocked.
-  - Prepared 2026-09-29: two pinned, limited-permission candidates and a sanitized fail-closed runner; pass 1 awaits a scoped token and paid-run approval.
+  - Pass 1 on 2026-09-29: official candidate reached 80%; API Dojo output could not map to direct post inputs. Both remain below gate; different-day confirmation remains.
 
 - [ ] **T003 Evaluate TikTok Actor candidates**
   - Depends on T001.
   - Apply the same evidence requirements as T002.
   - Exit: one candidate passes or the route remains explicitly blocked.
-  - Prepared 2026-09-29: two pinned, limited-permission candidates and bounded inputs/cost caps; pass 1 awaits a scoped token and paid-run approval.
+  - Pass 1 on 2026-09-29: Clockworks passed at 90% with clean mapping; Get Leads reached 90% but returned two unmapped results. Different-day confirmation remains.
 
 - [ ] **T004 Evaluate YouTube transcript fallback**
   - Depends on T001.
   - Test only as a fallback for Gemini video-unavailable cases.
   - Verify transcript language, timestamps, missing-caption behavior, and cost.
   - Exit: candidate passes or metadata-only remains the documented fallback.
-  - Prepared 2026-09-29: two caption-only candidates; the runner refuses to call them until configured Gemini has produced public `video_unavailable` case IDs.
+  - Pass 1 eligibility on 2026-09-29: 14 direct-video successes, zero `video_unavailable`, and six unresolved probes. No transcript Actor was called; repeat eligibility measurement remains.
 
 - [ ] **T005 Decide ordinary-web paid fallback**
   - Depends on T001.
   - Compare the approved Apify web candidate with current direct extraction only on direct failures.
   - Exit: enable only if readable-result improvement justifies measured cost and latency.
-  - Prepared 2026-09-29: the official content crawler is limited to the six current direct failures plus the inaccessible negative case; paid pass 1 awaits approval.
+  - Pass 1 on 2026-09-29: recovered four of six current direct failures at $0.00221 per recovered page and 33.304 s p95; different-day cost/latency confirmation remains.
 
 ## Phase 1 — Schema, compatibility, and telemetry
 

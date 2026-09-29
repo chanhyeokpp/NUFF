@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "passDate": "2026-09-29",
+  "generatedAt": "2026-09-29T04:41:02.664Z",
+  "candidate": {
+    "id": "instagram-apidojo",
+    "route": "instagram",
+    "actorId": "apidojo/instagram-scraper",
+    "buildId": "0yGIxpYgebMbgpc8t",
+    "buildNumber": "0.0.1077",
+    "permissionLevel": "LIMITED_PERMISSIONS"
+  },
+  "storagePolicy": "raw provider storage deleted after in-memory sanitization",
+  "summary": {
+    "totalCases": 21,
+    "publicCases": 20,
+    "successfulPublicCases": 0,
+    "metadataSuccessRate": 0,
+    "transcriptSuccessRate": 0,
+    "timestampCoverageRate": 0,
+    "explicitResultOrReasonRate": 0,
+    "p50DurationMs": 3710,
+    "p95DurationMs": 5219,
+    "duplicateResultCount": 0,
+    "unmappedResultCount": 30,
+    "costUsd": 0,
+    "costPerAttemptUsd": 0,
+    "costPerSuccessfulItemUsd": null,
+    "gate": {
+      "metadataSuccess": false,
+      "explicitCoverage": false,
+      "unambiguousMapping": false
+    }
+  },
+  "runs": [
+    {
+      "planId": "instagram-apidojo-1",
+      "status": "SUCCEEDED",
+      "durationMs": 3710,
+      "costUsd": 0,
+      "outputCount": 10,
+      "unmappedResultCount": 10,
+      "ignoredHelperResultCount": 0,
+      "duplicateResultCount": 0,
+      "cases": [
+        {
+          "caseId": "instagram-001",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-002",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-003",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-004",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-005",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-006",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-007",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-008",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-009",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-010",
+          "status": "missing",
+          "durationMs": 3710,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        }
+      ]
+    },
+    {
+      "planId": "instagram-apidojo-2",
+      "status": "SUCCEEDED",
+      "durationMs": 5219,
+      "costUsd": 0,
+      "outputCount": 10,
+      "unmappedResultCount": 10,
+      "ignoredHelperResultCount": 0,
+      "duplicateResultCount": 0,
+      "cases": [
+        {
+          "caseId": "instagram-011",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-012",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-013",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-014",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-015",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-016",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-017",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-018",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-019",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-020",
+          "status": "missing",
+          "durationMs": 5219,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        }
+      ]
+    },
+    {
+      "planId": "instagram-apidojo-3",
+      "status": "SUCCEEDED",
+      "durationMs": 2998,
+      "costUsd": 0,
+      "outputCount": 10,
+      "unmappedResultCount": 10,
+      "ignoredHelperResultCount": 0,
+      "duplicateResultCount": 0,
+      "cases": [
+        {
+          "caseId": "negative-inaccessible-instagram",
+          "status": "missing",
+          "durationMs": 2998,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        }
+      ]
+    }
+  ]
+}

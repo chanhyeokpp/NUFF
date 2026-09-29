@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "passDate": "2026-09-29",
+  "generatedAt": "2026-09-29T04:36:18.038Z",
+  "corpus": "nuff-public-extraction-v1",
+  "model": "gemini-3.8-flash",
+  "contentStored": false,
+  "status": "partial",
+  "results": [
+    {
+      "caseId": "youtube-001",
+      "status": "direct_video_available",
+      "durationMs": 8666,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-002",
+      "status": "direct_video_available",
+      "durationMs": 9397,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-003",
+      "status": "direct_video_available",
+      "durationMs": 6550,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-004",
+      "status": "direct_video_available",
+      "durationMs": 14438,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-005",
+      "status": "direct_video_available",
+      "durationMs": 17138,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-006",
+      "status": "direct_video_available",
+      "durationMs": 12385,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-007",
+      "status": "direct_video_available",
+      "durationMs": 8894,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-008",
+      "status": "direct_video_available",
+      "durationMs": 53458,
+      "attempts": 3
+    },
+    {
+      "caseId": "youtube-009",
+      "status": "direct_video_available",
+      "durationMs": 12802,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-010",
+      "status": "direct_video_available",
+      "durationMs": 14102,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-011",
+      "status": "direct_video_available",
+      "durationMs": 13304,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-012",
+      "status": "direct_video_available",
+      "durationMs": 9367,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-013",
+      "status": "probe_failed",
+      "durationMs": 7068,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-014",
+      "status": "direct_video_available",
+      "durationMs": 24452,
+      "attempts": 3
+    },
+    {
+      "caseId": "youtube-015",
+      "status": "direct_video_available",
+      "durationMs": 18166,
+      "attempts": 2
+    },
+    {
+      "caseId": "youtube-016",
+      "status": "probe_failed",
+      "durationMs": 7249,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-017",
+      "status": "probe_failed",
+      "durationMs": 7536,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-018",
+      "status": "probe_failed",
+      "durationMs": 7193,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-019",
+      "status": "probe_failed",
+      "durationMs": 7676,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-020",
+      "status": "probe_failed",
+      "durationMs": 7168,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Plan: Multi-source public-link ingestion
 
-Status: stage 2 evaluation prepared; provider choices pending paid two-date benchmark
+Status: stage 2 pass 1 recorded; provider choices pending different-day confirmation
 Specification: `spec.md`  
 Execution checklist: `tasks.md`
 
@@ -389,14 +389,14 @@ Initial alerts:
 
 Record benchmarked decisions here before enabling them.
 
-Evaluation preparation completed on 2026-09-29. `benchmarks/providers/candidates.v1.json` pins seven limited-permission builds, and `npm run benchmark:providers` enforces public-only inputs, per-run charge ceilings, sanitized reports, and temporary storage cleanup. No Actor has been called or approved yet. Instagram, TikTok, and direct-failure web pass 1 have a combined maximum configured exposure of USD 0.98. YouTube remains additionally blocked until configured Gemini produces public `video_unavailable` cases; with those cases present, all candidate ceilings total USD 1.16 per pass. See `docs/PROVIDER-EVALUATION.md`.
+Evaluation preparation completed on 2026-09-29. `benchmarks/providers/candidates.v1.json` pins seven limited-permission builds, and `npm run benchmark:providers` enforces public-only inputs, per-run charge ceilings, sanitized reports, and temporary storage cleanup. The first dated reports are in `benchmarks/providers/results/2026-09-29`; details and the discarded web diagnostic cost are in `docs/PROVIDER-EVALUATION.md`. No route is production-approved until its required different-day confirmation is recorded.
 
 | Route | Actor/build | Corpus date | Success | p95 | Cost/success | Decision |
 |---|---|---:|---:|---:|---:|---|
-| Instagram public metadata/caption | `apify/instagram-scraper@0.0.788`; `apidojo/instagram-scraper@0.0.1077` | — | — | — | — | pass 1 pending approval |
-| TikTok public metadata/caption | `clockworks/tiktok-scraper@0.0.610`; `get-leads/all-in-one-tiktok-scraper@0.1.224` | — | — | — | — | pass 1 pending approval |
-| YouTube transcript fallback | `prodiger/youtube-transcript-scraper---transcriber@0.5.11`; `insight.solutions/youtube-transcript-api@0.1.15` | — | — | — | — | blocked pending Gemini-unavailable cases |
-| Ordinary-web fallback | `apify/website-content-crawler@0.3.97` | — | — | — | — | optional; pass 1 pending approval |
+| Instagram public metadata/caption | `apify/instagram-scraper@0.0.788` | 2026-09-29 | 80% | 92.375 s | $0.00304 | pass 1 failed; route remains blocked |
+| TikTok public metadata/caption | `clockworks/tiktok-scraper@0.0.610` | 2026-09-29 | 90% | 46.773 s | $0.00417 | pass 1 passed; confirmation pending |
+| YouTube transcript fallback | no Actor called | 2026-09-29 | 0 eligible cases | — | $0 | keep Gemini-first; repeat eligibility measurement pending |
+| Ordinary-web fallback | `apify/website-content-crawler@0.3.97` | 2026-09-29 | 4/6 direct failures recovered | 33.304 s | $0.00221 | promising selective fallback; confirmation pending |
 
 ## External references
 

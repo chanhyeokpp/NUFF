@@ -31,7 +31,7 @@ Prices are a dated snapshot from Apify API v2 and may change. The runner always 
 
 ## Evaluation rules
 
-Each candidate uses the same relevant stage-1 cases and receives one deliberate duplicate. The report keeps only case ID, normalized outcome, timing, boolean content indicators, mapping counts, and aggregate cost. It never stores captions, transcripts, page text, titles, author names, thumbnails, raw errors, run IDs, dataset IDs, or tokens.
+Each candidate uses the same relevant, de-duplicated stage-1 cases. Duplicate prevention belongs to Nuff before provider dispatch; the evaluator still counts any duplicate outputs returned by a provider. The report keeps only case ID, normalized outcome, timing, boolean content indicators, mapping counts, and aggregate cost. It never stores captions, transcripts, page text, titles, author names, thumbnails, raw errors, run IDs, dataset IDs, or tokens.
 
 The production gate remains:
 
@@ -45,6 +45,22 @@ Transcript yield and timestamp coverage are reported separately. YouTube transcr
 
 `benchmarks/providers/youtube-fallback-cases.v1.json` is intentionally empty until configured Gemini measurements produce public `video_unavailable` cases. The runner skips both YouTube candidates while it is empty; arbitrary YouTube corpus entries cannot be substituted. The eligibility probe discards Gemini's generated analysis and stores only case ID, availability class, duration, date, and model.
 
+## Pass 1 — 2026-09-29
+
+The committed reports are under `benchmarks/providers/results/2026-09-29`. This is evidence from the first date only, not a production approval.
+
+| Candidate | Public success | Explicit coverage | Mapping | p95 | Reported cost | Pass-1 outcome |
+|---|---:|---:|---:|---:|---:|---|
+| `apify/instagram-scraper@0.0.788` | 16/20 (80%) | 100% | clean | 92.375 s | $0.0486 | failed 90% success gate |
+| `apidojo/instagram-scraper@0.0.1077` | 0/20 | 0% | 30 unmapped | 5.219 s | $0 | unsuitable for direct-post mapping |
+| `clockworks/tiktok-scraper@0.0.610` | 18/20 (90%) | 100% | clean | 46.773 s | $0.0750 | passed first-date gate |
+| `get-leads/all-in-one-tiktok-scraper@0.1.224` | 18/20 (90%) | 100% | 2 unmapped | 32.926 s | $0.09005 | failed unambiguous-mapping gate |
+| `apify/website-content-crawler@0.3.97` | 4/6 direct failures recovered | 5/7 | clean | 33.304 s | $0.00885 | useful improvement, but below generic Actor gate |
+
+The web row is judged again under T005's narrower fallback criterion after a different-day rerun. Its first diagnostic run cost $0.01113 before the inaccessible-case false-positive check was corrected; including that discarded diagnostic, observed Apify usage for this date was approximately $0.23363, within the free-plan credit.
+
+Gemini checked 20 public YouTube cases without storing generated content: 14 were directly analyzable, zero returned `video_unavailable`, and six remained `probe_failed` after three attempts. Because there were no valid fallback-eligible cases, neither YouTube transcript Actor was called.
+
 ## Running a pass
 
 The command is intentionally fail-closed. Without all three controls it prints the maximum exposure and starts nothing:
@@ -56,10 +72,10 @@ npm run benchmark:providers -- --candidate=all
 YouTube eligibility has a separate request-count approval because the Gemini API does not expose an equivalent per-run dollar ceiling:
 
 ```bash
-npm run benchmark:youtube-eligibility -- --pass-date=YYYY-MM-DD --confirm-paid-run=YES --max-approved-requests=20
+npm run benchmark:youtube-eligibility -- --pass-date=YYYY-MM-DD --confirm-external-run=YES --max-approved-requests=20
 ```
 
-This command requires `GEMINI_API_KEY` in the ignored `.env`, stops on authentication, rate-limit, or transient errors, and will not overwrite an existing dated report.
+This command requires `GEMINI_API_KEY` in the ignored `.env`, retries bounded transient failures, records unresolved cases without treating them as fallback-eligible, and will not overwrite an existing dated report. The YouTube URL feature was a no-charge Preview at the 2026-09-29 check; the explicit flag approves external requests and quota use rather than a dollar charge.
 
 To perform an approved pass, create a short-lived scoped Apify token in **Settings → API & Integrations**, give it only Actor-run and generated-storage access, and place it in the ignored local `.env` as `APIFY_API_TOKEN`. Never paste the token into chat, source, a command argument, or a committed document.
 
