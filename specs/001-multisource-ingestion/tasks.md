@@ -1,6 +1,6 @@
 # Tasks: Multi-source public-link ingestion
 
-Status: stage 1 complete
+Status: stage 2 in progress — evaluation harness ready; paid pass and different-day rerun pending
 
 Specification: `spec.md`  
 Technical plan: `plan.md`
@@ -57,22 +57,26 @@ Expected total active work: roughly 40–65 hours. Calendar time can be longer b
   - Test at least two maintained candidates on the same corpus twice on different days.
   - Record pinned Actor/build, schema, metadata success, explicit failure coverage, duration, and cost in `plan.md`.
   - Exit: one candidate passes the Actor gate or the route remains explicitly blocked.
+  - Prepared 2026-09-29: two pinned, limited-permission candidates and a sanitized fail-closed runner; pass 1 awaits a scoped token and paid-run approval.
 
 - [ ] **T003 Evaluate TikTok Actor candidates**
   - Depends on T001.
   - Apply the same evidence requirements as T002.
   - Exit: one candidate passes or the route remains explicitly blocked.
+  - Prepared 2026-09-29: two pinned, limited-permission candidates and bounded inputs/cost caps; pass 1 awaits a scoped token and paid-run approval.
 
 - [ ] **T004 Evaluate YouTube transcript fallback**
   - Depends on T001.
   - Test only as a fallback for Gemini video-unavailable cases.
   - Verify transcript language, timestamps, missing-caption behavior, and cost.
   - Exit: candidate passes or metadata-only remains the documented fallback.
+  - Prepared 2026-09-29: two caption-only candidates; the runner refuses to call them until configured Gemini has produced public `video_unavailable` case IDs.
 
 - [ ] **T005 Decide ordinary-web paid fallback**
   - Depends on T001.
   - Compare the approved Apify web candidate with current direct extraction only on direct failures.
   - Exit: enable only if readable-result improvement justifies measured cost and latency.
+  - Prepared 2026-09-29: the official content crawler is limited to the six current direct failures plus the inaccessible negative case; paid pass 1 awaits approval.
 
 ## Phase 1 — Schema, compatibility, and telemetry
 

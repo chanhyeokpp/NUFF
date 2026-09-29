@@ -1,6 +1,6 @@
 # Plan: Multi-source public-link ingestion
 
-Status: approved structure; provider choices pending benchmark  
+Status: stage 2 evaluation prepared; provider choices pending paid two-date benchmark
 Specification: `spec.md`  
 Execution checklist: `tasks.md`
 
@@ -389,12 +389,14 @@ Initial alerts:
 
 Record benchmarked decisions here before enabling them.
 
+Evaluation preparation completed on 2026-09-29. `benchmarks/providers/candidates.v1.json` pins seven limited-permission builds, and `npm run benchmark:providers` enforces public-only inputs, per-run charge ceilings, sanitized reports, and temporary storage cleanup. No Actor has been called or approved yet. Instagram, TikTok, and direct-failure web pass 1 have a combined maximum configured exposure of USD 0.98. YouTube remains additionally blocked until configured Gemini produces public `video_unavailable` cases; with those cases present, all candidate ceilings total USD 1.16 per pass. See `docs/PROVIDER-EVALUATION.md`.
+
 | Route | Actor/build | Corpus date | Success | p95 | Cost/success | Decision |
 |---|---|---:|---:|---:|---:|---|
-| Instagram public metadata/caption | TBD | — | — | — | — | blocked on evaluation |
-| TikTok public metadata/caption | TBD | — | — | — | — | blocked on evaluation |
-| YouTube transcript fallback | TBD | — | — | — | — | blocked on evaluation |
-| Ordinary-web fallback | TBD | — | — | — | — | optional; blocked on evaluation |
+| Instagram public metadata/caption | `apify/instagram-scraper@0.0.788`; `apidojo/instagram-scraper@0.0.1077` | — | — | — | — | pass 1 pending approval |
+| TikTok public metadata/caption | `clockworks/tiktok-scraper@0.0.610`; `get-leads/all-in-one-tiktok-scraper@0.1.224` | — | — | — | — | pass 1 pending approval |
+| YouTube transcript fallback | `prodiger/youtube-transcript-scraper---transcriber@0.5.11`; `insight.solutions/youtube-transcript-api@0.1.15` | — | — | — | — | blocked pending Gemini-unavailable cases |
+| Ordinary-web fallback | `apify/website-content-crawler@0.3.97` | — | — | — | — | optional; pass 1 pending approval |
 
 ## External references
 

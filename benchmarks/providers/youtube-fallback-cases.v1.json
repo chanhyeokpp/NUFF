@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "sourceCorpus": "benchmarks/extraction/corpus.v1.json",
+  "selectionRule": "Public YouTube cases for which configured Gemini returned video_unavailable",
+  "status": "awaiting_configured_gemini_measurement",
+  "caseIds": []
+}

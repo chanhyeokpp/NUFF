@@ -15,6 +15,8 @@
     "test": "node scripts/run-tests.mjs",
     "test:ingestion": "esbuild tests/ingestion.test.ts --bundle --platform=node --format=esm --outfile=.sites-runtime/ingestion.test.mjs && node --test .sites-runtime/ingestion.test.mjs",
     "benchmark:extraction": "esbuild scripts/extraction-baseline.ts --bundle --platform=node --format=esm --outfile=.sites-runtime/extraction-baseline.mjs && node .sites-runtime/extraction-baseline.mjs",
+    "benchmark:youtube-eligibility": "esbuild scripts/youtube-fallback-eligibility.ts --bundle --platform=node --format=esm --outfile=.sites-runtime/youtube-fallback-eligibility.mjs && node --env-file-if-exists=.env .sites-runtime/youtube-fallback-eligibility.mjs",
+    "benchmark:providers": "esbuild scripts/provider-evaluation.ts --bundle --platform=node --format=esm --outfile=.sites-runtime/provider-evaluation.mjs && node --env-file-if-exists=.env .sites-runtime/provider-evaluation.mjs",
     "dev:ingestion": "wrangler dev --config ingestion/wrangler.jsonc --test-scheduled --port 8788 --persist-to .wrangler/ingestion-state"
   },
   "dependencies": {
