@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "passDate": "2026-09-30",
+  "generatedAt": "2026-09-30T12:28:46.324Z",
+  "candidate": {
+    "id": "web-apify-content-crawler",
+    "route": "web",
+    "actorId": "apify/website-content-crawler",
+    "buildId": "u8gClHFAIyDHCQq0J",
+    "buildNumber": "0.3.97",
+    "permissionLevel": "LIMITED_PERMISSIONS"
+  },
+  "storagePolicy": "raw provider storage deleted after in-memory sanitization",
+  "summary": {
+    "totalCases": 7,
+    "publicCases": 6,
+    "successfulPublicCases": 4,
+    "metadataSuccessRate": 0.6666666666666666,
+    "transcriptSuccessRate": 0,
+    "timestampCoverageRate": 0,
+    "explicitResultOrReasonRate": 0.7142857142857143,
+    "p50DurationMs": 91191,
+    "p95DurationMs": 91191,
+    "duplicateResultCount": 0,
+    "unmappedResultCount": 0,
+    "costUsd": 0.029790766561884025,
+    "costPerAttemptUsd": 0.004255823794554861,
+    "costPerSuccessfulItemUsd": 0.007447691640471006,
+    "gate": {
+      "metadataSuccess": false,
+      "explicitCoverage": false,
+      "unambiguousMapping": true
+    }
+  },
+  "runs": [
+    {
+      "planId": "web-apify-content-crawler",
+      "status": "SUCCEEDED",
+      "durationMs": 91191,
+      "costUsd": 0.029790766561884025,
+      "outputCount": 7,
+      "unmappedResultCount": 0,
+      "ignoredHelperResultCount": 0,
+      "duplicateResultCount": 0,
+      "cases": [
+        {
+          "caseId": "web-019",
+          "status": "content_success",
+          "durationMs": 91191,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "web-020",
+          "status": "missing",
+          "durationMs": 91191,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "web-022",
+          "status": "missing",
+          "durationMs": 91191,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "web-025",
+          "status": "content_success",
+          "durationMs": 91191,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "web-026",
+          "status": "content_success",
+          "durationMs": 91191,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "web-030",
+          "status": "content_success",
+          "durationMs": 91191,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "negative-inaccessible-web",
+          "status": "explicit_failure",
+          "durationMs": 91191,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "unexpected_success_for_inaccessible_case"
+        }
+      ]
+    }
+  ]
+}

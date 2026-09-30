@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "passDate": "2026-09-30",
+  "generatedAt": "2026-09-30T12:24:09.268Z",
+  "candidate": {
+    "id": "instagram-apify-official",
+    "route": "instagram",
+    "actorId": "apify/instagram-scraper",
+    "buildId": "W4F459T8W7yaaJvoO",
+    "buildNumber": "0.0.788",
+    "permissionLevel": "LIMITED_PERMISSIONS"
+  },
+  "storagePolicy": "raw provider storage deleted after in-memory sanitization",
+  "summary": {
+    "totalCases": 21,
+    "publicCases": 20,
+    "successfulPublicCases": 16,
+    "metadataSuccessRate": 0.8,
+    "transcriptSuccessRate": 0,
+    "timestampCoverageRate": 0,
+    "explicitResultOrReasonRate": 1,
+    "p50DurationMs": 100659,
+    "p95DurationMs": 100659,
+    "duplicateResultCount": 0,
+    "unmappedResultCount": 0,
+    "costUsd": 0.0513,
+    "costPerAttemptUsd": 0.002442857142857143,
+    "costPerSuccessfulItemUsd": 0.00320625,
+    "gate": {
+      "metadataSuccess": false,
+      "explicitCoverage": true,
+      "unambiguousMapping": true
+    }
+  },
+  "runs": [
+    {
+      "planId": "instagram-apify-official-posts",
+      "status": "SUCCEEDED",
+      "durationMs": 100659,
+      "costUsd": 0.0432,
+      "outputCount": 17,
+      "unmappedResultCount": 0,
+      "ignoredHelperResultCount": 0,
+      "duplicateResultCount": 0,
+      "cases": [
+        {
+          "caseId": "instagram-001",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-002",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-003",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-004",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-005",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-006",
+          "status": "explicit_failure",
+          "durationMs": 100659,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        },
+        {
+          "caseId": "instagram-007",
+          "status": "explicit_failure",
+          "durationMs": 100659,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        },
+        {
+          "caseId": "instagram-008",
+          "status": "explicit_failure",
+          "durationMs": 100659,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        },
+        {
+          "caseId": "instagram-009",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-010",
+          "status": "explicit_failure",
+          "durationMs": 100659,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        },
+        {
+          "caseId": "instagram-011",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-012",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-016",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-017",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-018",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-019",
+          "status": "metadata_success",
+          "durationMs": 100659,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "negative-inaccessible-instagram",
+          "status": "explicit_failure",
+          "durationMs": 100659,
+          "hasCaption": false,
+          "hasTranscript": false,
+          "hasTimestamps": false,
+          "errorCode": "provider_reported_failure"
+        }
+      ]
+    },
+    {
+      "planId": "instagram-apify-official-reels",
+      "status": "SUCCEEDED",
+      "durationMs": 89329,
+      "costUsd": 0.0081,
+      "outputCount": 4,
+      "unmappedResultCount": 0,
+      "ignoredHelperResultCount": 0,
+      "duplicateResultCount": 0,
+      "cases": [
+        {
+          "caseId": "instagram-013",
+          "status": "metadata_success",
+          "durationMs": 89329,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-014",
+          "status": "metadata_success",
+          "durationMs": 89329,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-015",
+          "status": "metadata_success",
+          "durationMs": 89329,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        },
+        {
+          "caseId": "instagram-020",
+          "status": "metadata_success",
+          "durationMs": 89329,
+          "hasCaption": true,
+          "hasTranscript": false,
+          "hasTimestamps": false
+        }
+      ]
+    }
+  ]
+}

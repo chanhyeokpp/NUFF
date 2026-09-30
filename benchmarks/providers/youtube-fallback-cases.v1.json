@@ -3,7 +3,7 @@
   "sourceCorpus": "benchmarks/extraction/corpus.v1.json",
   "selectionRule": "Public YouTube cases for which configured Gemini returned video_unavailable",
   "status": "measured_with_probe_failures",
-  "observedAt": "2026-09-29T04:36:18.038Z",
+  "observedAt": "2026-09-30T12:20:17.926Z",
   "model": "gemini-3.8-flash",
   "caseIds": []
 }

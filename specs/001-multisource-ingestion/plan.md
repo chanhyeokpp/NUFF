@@ -1,6 +1,6 @@
 # Plan: Multi-source public-link ingestion
 
-Status: stage 2 pass 1 recorded; provider choices pending different-day confirmation
+Status: stage 2 complete; provider decisions recorded from 2026-09-29 and 2026-09-30 evidence
 Specification: `spec.md`  
 Execution checklist: `tasks.md`
 
@@ -66,6 +66,22 @@ Queue delivery is an acceleration signal, not the sole record. A D1 row exists b
 ### D-007 — Authenticate Apify callbacks with a secret header
 
 Create an Apify webhook with an authorization header template referencing a Cloudflare secret. Reject absent or incorrect credentials before reading provider result data. Do not put secrets in source, documentation, callback URLs, or logs.
+
+### D-008 — Keep Instagram Actor routing blocked
+
+`apify/instagram-scraper@0.0.788` returned metadata for 16/20 public cases on both dates, below the 90% gate. `apidojo/instagram-scraper@0.0.1077` returned 30 results that could not map to the requested direct-post inputs; its Store contract is profile/search oriented, and its free-plan five-run monthly limit cannot cover another full three-run corpus pass. It is disqualified by schema and mapping rather than eligible for production confirmation. Keep the current honest Instagram preview/`needs_content` behavior until a new candidate completes this gate.
+
+### D-009 — Approve the pinned Clockworks TikTok Actor
+
+Use `clockworks/tiktok-scraper@0.0.610` as the only approved TikTok candidate. It produced 18/20 metadata successes, 100% explicit result-or-reason coverage, and zero unmapped results on both dates. `get-leads/all-in-one-tiktok-scraper@0.1.224` produced two unmapped results on both dates and is rejected. Production enablement still requires the asynchronous gateway, budgets, telemetry, feature flag, and canary in later stages.
+
+### D-010 — Do not add a YouTube transcript Actor yet
+
+Across two dates, configured Gemini produced no `video_unavailable` case in the fixed public corpus. The second date also showed substantial Preview instability, but generic `gemini_video_failed` outcomes are not allowed to trigger a transcript Actor. Keep Gemini direct-video first and official metadata as the final fallback. Reopen transcript Actor evaluation only after real sanitized `video_unavailable` cases exist.
+
+### D-011 — Allow the official web crawler only after direct failure
+
+`apify/website-content-crawler@0.3.97` recovered the same four of six direct-extraction failures on both dates with zero mapping ambiguity. It does not meet the generic 90% Actor gate and must never become the primary web extractor. T005's narrower fallback decision is positive because it adds readable content for 67% of otherwise unreadable public pages at $0.00221–$0.00745 per recovered page. Keep it behind a route flag, one-page bounds, asynchronous processing, an explicit missing-result outcome, and the daily budget.
 
 ## Target flow
 
@@ -389,14 +405,14 @@ Initial alerts:
 
 Record benchmarked decisions here before enabling them.
 
-Evaluation preparation completed on 2026-09-29. `benchmarks/providers/candidates.v1.json` pins seven limited-permission builds, and `npm run benchmark:providers` enforces public-only inputs, per-run charge ceilings, sanitized reports, and temporary storage cleanup. The first dated reports are in `benchmarks/providers/results/2026-09-29`; details and the discarded web diagnostic cost are in `docs/PROVIDER-EVALUATION.md`. No route is production-approved until its required different-day confirmation is recorded.
+Evaluation preparation completed on 2026-09-29. `benchmarks/providers/candidates.v1.json` pins seven limited-permission builds, and `npm run benchmark:providers` enforces public-only inputs, per-run charge ceilings, sanitized reports, and temporary storage cleanup. Dated sanitized reports are in `benchmarks/providers/results/2026-09-29` and `benchmarks/providers/results/2026-09-30`; detailed comparisons and the discarded web diagnostic cost are in `docs/PROVIDER-EVALUATION.md`.
 
 | Route | Actor/build | Corpus date | Success | p95 | Cost/success | Decision |
 |---|---|---:|---:|---:|---:|---|
-| Instagram public metadata/caption | `apify/instagram-scraper@0.0.788` | 2026-09-29 | 80% | 92.375 s | $0.00304 | pass 1 failed; route remains blocked |
-| TikTok public metadata/caption | `clockworks/tiktok-scraper@0.0.610` | 2026-09-29 | 90% | 46.773 s | $0.00417 | pass 1 passed; confirmation pending |
-| YouTube transcript fallback | no Actor called | 2026-09-29 | 0 eligible cases | — | $0 | keep Gemini-first; repeat eligibility measurement pending |
-| Ordinary-web fallback | `apify/website-content-crawler@0.3.97` | 2026-09-29 | 4/6 direct failures recovered | 33.304 s | $0.00221 | promising selective fallback; confirmation pending |
+| Instagram public metadata/caption | `apify/instagram-scraper@0.0.788` | 09-29 / 09-30 | 80% / 80% | 92.375 / 100.659 s | $0.00304 / $0.00321 | blocked; no candidate passed |
+| TikTok public metadata/caption | `clockworks/tiktok-scraper@0.0.610` | 09-29 / 09-30 | 90% / 90% | 46.773 / 37.901 s | $0.00417 / $0.00396 | approved for later flagged integration |
+| YouTube transcript fallback | no Actor called | 09-29 / 09-30 | 0 / 0 eligible cases | — | $0 | no transcript Actor; metadata remains fallback |
+| Ordinary-web fallback | `apify/website-content-crawler@0.3.97` | 09-29 / 09-30 | 4/6 / 4/6 direct failures recovered | 33.304 / 91.191 s | $0.00221 / $0.00745 | approved only after direct failure |
 
 ## External references
 

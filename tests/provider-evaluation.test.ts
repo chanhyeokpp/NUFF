@@ -92,3 +92,18 @@ test('an inaccessible benchmark case cannot pass from a long error page', () => 
   assert.equal(result.cases[0].status, 'explicit_failure');
   assert.equal(result.cases[0].errorCode, 'unexpected_success_for_inaccessible_case');
 });
+
+test('two dated reports support the recorded final route decisions', () => {
+  const report = (date: string, id: string) => JSON.parse(readFileSync(`benchmarks/providers/results/${date}/${id}.json`, 'utf8'));
+  const instagram = ['2026-09-29', '2026-09-30'].map(date => report(date, 'instagram-apify-official'));
+  const clockworks = ['2026-09-29', '2026-09-30'].map(date => report(date, 'tiktok-clockworks'));
+  const getLeads = ['2026-09-29', '2026-09-30'].map(date => report(date, 'tiktok-get-leads'));
+  const web = ['2026-09-29', '2026-09-30'].map(date => report(date, 'web-apify-content-crawler'));
+  const youtube = ['2026-09-29', '2026-09-30'].map(date => report(date, 'youtube-gemini-eligibility'));
+
+  assert.deepEqual(instagram.map(value => value.summary.metadataSuccessRate), [0.8, 0.8]);
+  assert.ok(clockworks.every(value => value.candidate.buildNumber === '0.0.610' && Object.values(value.summary.gate).every(Boolean)));
+  assert.ok(getLeads.every(value => value.summary.unmappedResultCount === 2 && value.summary.gate.unambiguousMapping === false));
+  assert.deepEqual(web.map(value => value.summary.successfulPublicCases), [4, 4]);
+  assert.ok(youtube.every(value => value.results.every((item: { status: string }) => item.status !== 'video_unavailable')));
+});

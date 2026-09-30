@@ -1,6 +1,6 @@
 # Tasks: Multi-source public-link ingestion
 
-Status: stage 2 in progress — pass 1 recorded on 2026-09-29; different-day rerun pending
+Status: stage 2 complete
 
 Specification: `spec.md`  
 Technical plan: `plan.md`
@@ -52,31 +52,35 @@ Expected total active work: roughly 40–65 hours. Calendar time can be longer b
   - Do not commit private URLs, credentials, or copyrighted transcripts.
   - Exit: baseline output is reproducible and contains at least 30 ordinary-web, 20 YouTube, 20 Instagram, and 20 TikTok public cases plus negative cases.
 
-- [ ] **T002 Evaluate Instagram Actor candidates**
+- [x] **T002 Evaluate Instagram Actor candidates**
   - Depends on T001.
   - Test at least two maintained candidates on the same corpus twice on different days.
   - Record pinned Actor/build, schema, metadata success, explicit failure coverage, duration, and cost in `plan.md`.
   - Exit: one candidate passes the Actor gate or the route remains explicitly blocked.
   - Pass 1 on 2026-09-29: official candidate reached 80%; API Dojo output could not map to direct post inputs. Both remain below gate; different-day confirmation remains.
+  - Pass 2 on 2026-09-30: official candidate again reached 80%. API Dojo was not rerun because its direct-post schema/mapping was already disqualifying and the free-plan five-run limit cannot cover a second full corpus; the route is explicitly blocked under D-008.
 
-- [ ] **T003 Evaluate TikTok Actor candidates**
+- [x] **T003 Evaluate TikTok Actor candidates**
   - Depends on T001.
   - Apply the same evidence requirements as T002.
   - Exit: one candidate passes or the route remains explicitly blocked.
   - Pass 1 on 2026-09-29: Clockworks passed at 90% with clean mapping; Get Leads reached 90% but returned two unmapped results. Different-day confirmation remains.
+  - Pass 2 on 2026-09-30 reproduced both outcomes. Clockworks `0.0.610` is approved under D-009; Get Leads is rejected.
 
-- [ ] **T004 Evaluate YouTube transcript fallback**
+- [x] **T004 Evaluate YouTube transcript fallback**
   - Depends on T001.
   - Test only as a fallback for Gemini video-unavailable cases.
   - Verify transcript language, timestamps, missing-caption behavior, and cost.
   - Exit: candidate passes or metadata-only remains the documented fallback.
   - Pass 1 eligibility on 2026-09-29: 14 direct-video successes, zero `video_unavailable`, and six unresolved probes. No transcript Actor was called; repeat eligibility measurement remains.
+  - Pass 2 eligibility on 2026-09-30: one direct-video success, zero `video_unavailable`, and 19 unresolved probes. No valid fallback corpus exists, so no transcript Actor is approved and metadata-only remains the documented fallback under D-010.
 
-- [ ] **T005 Decide ordinary-web paid fallback**
+- [x] **T005 Decide ordinary-web paid fallback**
   - Depends on T001.
   - Compare the approved Apify web candidate with current direct extraction only on direct failures.
   - Exit: enable only if readable-result improvement justifies measured cost and latency.
   - Pass 1 on 2026-09-29: recovered four of six current direct failures at $0.00221 per recovered page and 33.304 s p95; different-day cost/latency confirmation remains.
+  - Pass 2 on 2026-09-30: recovered the same four of six at $0.00745 per recovered page and 91.191 s p95. Approved only as an asynchronous direct-failure fallback under D-011.
 
 ## Phase 1 — Schema, compatibility, and telemetry
 

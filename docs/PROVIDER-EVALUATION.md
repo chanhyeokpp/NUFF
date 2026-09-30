@@ -61,6 +61,27 @@ The web row is judged again under T005's narrower fallback criterion after a dif
 
 Gemini checked 20 public YouTube cases without storing generated content: 14 were directly analyzable, zero returned `video_unavailable`, and six remained `probe_failed` after three attempts. Because there were no valid fallback-eligible cases, neither YouTube transcript Actor was called.
 
+## Pass 2 — 2026-09-30
+
+| Candidate | Public success | Explicit coverage | Mapping | p95 | Reported cost | Final outcome |
+|---|---:|---:|---:|---:|---:|---|
+| `apify/instagram-scraper@0.0.788` | 16/20 (80%) | 100% | clean | 100.659 s | $0.0513 | failed on both dates; blocked |
+| `apidojo/instagram-scraper@0.0.1077` | not rerun | — | schema disqualified on pass 1 | — | $0 | rejected; five-run free limit also prevents a full second corpus |
+| `clockworks/tiktok-scraper@0.0.610` | 18/20 (90%) | 100% | clean | 37.901 s | $0.0713 | passed both dates; approved candidate |
+| `get-leads/all-in-one-tiktok-scraper@0.1.224` | 18/20 (90%) | 100% | 2 unmapped | 32.834 s | $0.09005 | mapping failure reproduced; rejected |
+| `apify/website-content-crawler@0.3.97` | 4/6 direct failures recovered | 5/7 | clean | 91.191 s | $0.02979 | approve only after direct failure |
+
+The second Gemini eligibility measurement produced one direct-video success, zero `video_unavailable` outcomes, and 19 bounded `probe_failed` outcomes. This instability is evidence against broadening the fallback trigger: only the explicit `video_unavailable` code may use a transcript Actor. No YouTube Actor was called on either date.
+
+Observed Apify usage across both dated evaluations, including the discarded first-day web diagnostic, was approximately USD 0.4761. This was inside the free-plan credit. Cost caps remain mandatory because Store pricing can change.
+
+## Final route decisions
+
+- Instagram: blocked; keep honest preview/`needs_content` behavior.
+- TikTok: approve only `clockworks/tiktok-scraper@0.0.610` for later flagged, asynchronous integration.
+- YouTube: keep Gemini-first and official metadata fallback; do not configure a transcript Actor yet.
+- Ordinary web: allow `apify/website-content-crawler@0.3.97` only after direct extraction fails, with a one-page bound, budget gate, and explicit missing-result handling.
+
 ## Running a pass
 
 The command is intentionally fail-closed. Without all three controls it prints the maximum exposure and starts nothing:

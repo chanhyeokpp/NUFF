@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "passDate": "2026-09-30",
+  "generatedAt": "2026-09-30T12:20:17.926Z",
+  "corpus": "nuff-public-extraction-v1",
+  "model": "gemini-3.8-flash",
+  "contentStored": false,
+  "status": "partial",
+  "results": [
+    {
+      "caseId": "youtube-001",
+      "status": "direct_video_available",
+      "durationMs": 51850,
+      "attempts": 1
+    },
+    {
+      "caseId": "youtube-002",
+      "status": "probe_failed",
+      "durationMs": 72497,
+      "attempts": 3,
+      "errorCode": "gemini_video_failed"
+    },
+    {
+      "caseId": "youtube-003",
+      "status": "probe_failed",
+      "durationMs": 80699,
+      "attempts": 3,
+      "errorCode": "gemini_video_failed"
+    },
+    {
+      "caseId": "youtube-004",
+      "status": "probe_failed",
+      "durationMs": 55464,
+      "attempts": 3,
+      "errorCode": "gemini_video_failed"
+    },
+    {
+      "caseId": "youtube-005",
+      "status": "probe_failed",
+      "durationMs": 33788,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-006",
+      "status": "probe_failed",
+      "durationMs": 16165,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-007",
+      "status": "probe_failed",
+      "durationMs": 18108,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-008",
+      "status": "probe_failed",
+      "durationMs": 6912,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-009",
+      "status": "probe_failed",
+      "durationMs": 7272,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-010",
+      "status": "probe_failed",
+      "durationMs": 14667,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-011",
+      "status": "probe_failed",
+      "durationMs": 7063,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-012",
+      "status": "probe_failed",
+      "durationMs": 6934,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-013",
+      "status": "probe_failed",
+      "durationMs": 6741,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-014",
+      "status": "probe_failed",
+      "durationMs": 7217,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-015",
+      "status": "probe_failed",
+      "durationMs": 6955,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-016",
+      "status": "probe_failed",
+      "durationMs": 7104,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-017",
+      "status": "probe_failed",
+      "durationMs": 7128,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-018",
+      "status": "probe_failed",
+      "durationMs": 7515,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-019",
+      "status": "probe_failed",
+      "durationMs": 7023,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    },
+    {
+      "caseId": "youtube-020",
+      "status": "probe_failed",
+      "durationMs": 7017,
+      "attempts": 3,
+      "errorCode": "gemini_rate_limited"
+    }
+  ]
+}
